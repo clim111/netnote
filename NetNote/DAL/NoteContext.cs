@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace NetNote.DAL
 {
-    public class NoteContext:IdentityDbContext<NoteUser>
+    public class NoteContext:DbContext
     {
         public NoteContext(DbContextOptions<NoteContext> options) : base(options)
         {}

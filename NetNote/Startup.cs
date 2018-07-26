@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NetNote.DAL;
-using NetNote.Middleware;
+//using NetNote.Middleware;
 using NetNote.Model;
 using NetNote.Repository;
 
@@ -32,11 +32,11 @@ namespace NetNote
         {
             var connection = "server=.;Database=Note;UID=sa;Pwd=123456;";
             services.AddDbContext<NoteContext>(options => options.UseSqlServer(connection
-                //, b => b.UseRowNumberForPaging()
+                , b => b.UseRowNumberForPaging()
                 ));
-            services.AddIdentity<NoteUser, IdentityRole>()
-                .AddEntityFrameworkStores<NoteContext>()
-                .AddDefaultTokenProviders();
+            //services.AddIdentity<NoteUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<NoteContext>()
+            //    .AddDefaultTokenProviders();
             services.AddMvc();
             services.AddScoped<INoteRepository, NoteRepository>();
             services.AddScoped<INoteTypeRepository, NoteTypeRepository>();
@@ -54,7 +54,7 @@ namespace NetNote
             {
                 app.UseExceptionHandler("/Error");
             }
-            app.UseBasicMiddleware(new BasicUser() { UserName = "admin", Password = "123456" });
+            //app.UseBasicMiddleware(new BasicUser() { UserName = "admin", Password = "123456" });
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
