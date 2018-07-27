@@ -10,9 +10,11 @@ using NetNote.Repository;
 using NetNote.ViewModels;
 
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NetNote.Controllers
 {
+    //[Authorize]
     public class NoteController : Controller
     {
         private INoteRepository noteRepository;
